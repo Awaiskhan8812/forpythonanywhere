@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To do App</title>
+    <style>
+        #head{
+            background-color: #1b5e50;
+            color: #ffffff;
+            padding: 5px;
+            text-align: center;
+        }
+        .input{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        .input [type = "submit"]{
+            background-color: #006064;
+            border: 0px;
+            font-size: 15px;
+            color: #ffffff;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        #todo{
+            margin-right: 0%;
+            margin-top: 20px;
+            background-color: #a5d6a7;
+            min-width: 10px;
+            border-radius: 50px;
+            padding: 30px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body bgcolor="#e8f5e9">
+    <div id = "head">
+        <h1>To Do App</h1>
+        <a href="/todo/logout">
+            <img src="{% static 'logout.png'%}" width="40" style="float: right; margin-top: -70px;" >
+        </a
+    </div>
+    <div style="background-color: #e8eaf6; text-align: center; padding: 10px;">
+        Welcome <b>{{user}}</b>
+    </div>
+    <div id="todo">
+        <form method="POST" action="/partoug/saving/">
+            {% csrf_token %}
+            <input type="text" placeholder="username" class="input" name="txt_username">
+            <input style="margin: 20px;" type="password" placeholder="password" class="input" name="txt_password">
+            <label><b>Gender</b></label>
+            <input style="margin: 10px;" type="radio" name="gender" value="Male" required>Male
+            <input type="radio" name="gender" value="Female" required>Female<br>
+            <input style = "margin: 10px;" type="text" placeholder="phone" class="input" name="txt_phone">
+            <input type="date" placeholder="date" class="input" name="txt_date">
+            <br>
+            <input type="submit" value="SAVE" class="input">
+        </form>
+    </div>
+    <div style="margin: 20px;">
+        <table width="100%" cellpading="5" border="1" cellspacing = "0">
+            <tr>
+                <th>user_id</th>
+                <th>username</th>
+                <th>password</th>
+                <th>gender</th>
+                <th>phone</th>
+                <th>Dateofbirth</th>
+            </tr>
+            {% for todo in todos%}
+            <tr>
+                <td>
+                    {{todo.1}}
+                </td>
+                <td>
+                    {{todo.2}}
+                </td>
+                <td align="right" width=20 >
+                    <a href="/partoug/delete?id={{todo.0}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <hr>
+    <p align = "center">
+        <b>Developed</b>    <i>cybersquare</i>
+    </p>    
+</body>
+</html>

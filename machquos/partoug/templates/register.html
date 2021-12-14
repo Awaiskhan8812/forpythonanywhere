@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Register</title>
+    <style>
+
+        #head{
+            background-color: #33b1aa;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+        }
+        .input{
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+        #Register{
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 100px;
+            text-align: center;
+            background-color: #33b1aa;
+            min-width: 400px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        input [type = 'submit'] {
+            background-color: #33b1aa;
+            border: 0px;
+            font-size: 15px;
+            color: #ffffff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <h1 style=> Register </h1>
+        <a href="/partoug">
+            <img src="{% static 'home.png'%}" width="40" style="float: right; margin-top: -70px;">
+        </a>
+    </div>
+    <div id="Register">
+
+        <form name="frm_register" action="/partoug/register/" method="POST" >
+            {% csrf_token %}
+
+        <input type="text" name="txt1_username" class="input" placeholder="Username" required><br> 
+        <input type="password" name="txt1_password" class="input" placeholder="password" required><br> 
+        <label><b>Gender</b></label>
+        <input type="radio" name="gender1" value="Male" required>Male
+        <input type="radio" name="gender1" value="Female" required>Female<br>
+        <input type="text" name="txt_phone1" class="input" placeholder="Phone Number" required><br>
+        <input type="date" name="txt_dob1" class="input" required><br> 
+        <input type="submit" name="txt_submit1" class="input" value = "Register">
+    </form>
+    <p style="color:#1B5E20">{{success}}
+        {% if 'success'  in success %}
+            <a href="/partoug/login">Click here to Login</a> 
+            {% endif %}
+        </p>
+       <p style="color:#B71C1C">{{fail}}</p>
+</div>
+    
+     <br><br><br><br><br]+}
+    <hr>
+  <p align = "center">
+      <b>Developed by:</b> <i>Awa</i>
+  </p>
+</body>
+ 
+</html>
